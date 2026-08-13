@@ -12,4 +12,7 @@ all:
 	-CFLAGS "-std=c++14" \
 	-o $(TARGET)
 
+run:
+	./obj_dir/scan_ff_sim
+
 
