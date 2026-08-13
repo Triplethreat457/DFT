@@ -34,7 +34,7 @@ if (dut->Q == 0)
 else
     printf("Initial Q = %d\n", dut->Q);
 
-printf("----------------------Capture test-------------------------\n");
+printf("----------------------CAPTURE TEST-------------------------\n");
 
 
 dut->d = 1; //  d is set to one , clk is still zero
@@ -45,17 +45,57 @@ dut->clk = 1; // Posclk edge
 dut->eval();
 // Check to see if Q captured 
 if(dut->Q == 1) {
-    printf("Pass: Q Captured the D = 1\n");
+    printf("PASS: Q Captured the D = 1\n");
 } else {
     printf("FAIL: Q = %d, expected 1\n", dut->Q);
 }
 
-printf("----------------------SHIFT TEST-------------------------\n")
+printf("----------------------SHIFT TEST-------------------------\n");
 dut->clk = 0;
 dut->scan_enable = 1;
 dut->eval();
 
-dut->clk
+dut->clk = 1; // Posclk edge
+dut->eval();
+if(dut->Q == 0){
+    printf("PASS: Q shifted in the input of scan_input into Q (SHIFT MODE works)!!\n");
+} else {
+    printf("FAIL: Q was read as %d expected 0 from scan_input\n", dut->Q);
+}
+
+printf("----------------------RESET TEST-------------------------\n");
+dut->scan_input = 1;
+dut->clk = 0;
+dut-> eval();
+dut->clk = 1;
+dut->eval(); //posclk edge set 
+
+
+dut->reset = 1; // Set the reset to be high
+dut-> eval(); 
+
+dut->clk = 0;
+dut->eval();
+
+dut->clk = 1; //posclk edge set
+dut->eval(); // Q should be reset because reset was high
+
+if(dut->Q == 0) {
+    printf("PASS: Q was reset to zero when reset was asserted\n");
+} else {
+    printf("FAIL: Q was read to be %d did not reset to zero\n", dut->Q);
+}
+
+
+// CLEAN UP SPACE
+
+delete dut; 
+delete contextp;
+
+
+return 0;
+
+
 
 
 
