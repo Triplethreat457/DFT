@@ -10,7 +10,7 @@ int main (int argc, char** argv){
 
 printf("-------------SCAN CHAIN TEST------------------------\n\n\n");
 dut->reset = 0;
-dut->scan_enable = 0;
+dut->scan_enable = 0; 
 dut->scan_input = 4;
 dut->clk = 0;
 for(int i = 0; i < 8; i ++){
@@ -19,7 +19,24 @@ for(int i = 0; i < 8; i ++){
 dut->eval();
 printf("Intialized everything to zero and randomized d values\n");
 
-dut-> 
+dut->reset = 1;
+dut->eval();
+dut-> clk = 1; //posedge clk
+printf("Posedge asserted .....\n");
+printf("RESET is High.....\n");
+
+dut->eval();
+bool ck = false;
+for (int i = 0; i < 8; ++i){
+    if (dut->Q[i] != 0) ck = true;
+}
+if 
+
+
+
+
+
+
 
 
 
