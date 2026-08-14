@@ -19,6 +19,7 @@ scan_chain:
 	$(VERILATOR) --cc --exe --build --Wall \
 	$(RTLT) $(TB2) \
 	--top-module scan_chain \
+	-Gwidth=8 \
 	-CFLAGS "-std=c++14" \
 	-o $(TARGET)
 

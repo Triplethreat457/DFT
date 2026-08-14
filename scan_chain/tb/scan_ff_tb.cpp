@@ -17,7 +17,7 @@ int main(int argc, char** argv){
     dut->reset = 0;
     dut->scan_enable = 0;
     dut->scan_input = 0;
-    dut->d = 0;
+    for(int i = 0; i )
 
 /* clk          = 0
    reset        = 0
