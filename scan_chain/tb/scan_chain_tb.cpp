@@ -3,7 +3,6 @@
 #include <vector>
 #include  <cstdio> // for std::printf 
 #include <cstdlib> // for std::rand()
-
 #include "verilated_vcd_c.h" // File for tracing GTK Waves
 
 

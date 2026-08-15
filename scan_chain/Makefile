@@ -10,7 +10,7 @@ CHAIN_T = scan_chain_sim
 
 
 scan_ff:
-	$(VERILATOR) --cc --exe --build --Wall \
+	$(VERILATOR) --cc --exe --build --Wall --trace \
 	$(RTL) $(TB) \
 	--top-module scan_ff \
 	-CFLAGS "-std=c++14" \
@@ -23,14 +23,28 @@ scan_chain:
 	-Gwidth=8 \
 	-CFLAGS "-std=c++14" \
 	-o $(CHAIN_T)
-
+test:
+	$(VERILATOR) --cc --exe --build --Wall --trace \
+	$(RTL) $(TB) \
+	--top-module scan_ff \
+	-CFLAGS "-std=c++14" \
+	-o $(TARGET) 
+	$(VERILATOR) --cc --exe --build --Wall --trace \
+	$(RTLT) $(TB2) \
+	--top-module scan_chain \
+	-Gwidth=8 \
+	-CFLAGS "-std=c++14" \
+	-o $(CHAIN_T)
 
 run_scan_ff:
 	./obj_dir/scan_ff_sim
 run_scan_chain:
 	./obj_dir/scan_chain_sim
 
-   
+run_test:
+	./obj_dir/scan_ff_sim
+	./obj_dir/scan_chain_sim
+	
 clean:
 	rm -rf obj_dir
 	rm -rf scan_chain.vcd
