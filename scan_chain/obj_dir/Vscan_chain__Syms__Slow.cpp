@@ -1,9 +1,9 @@
 // Verilated -*- C++ -*-
 // DESCRIPTION: Verilator output: Symbol table implementation internals
 
-#include "Vscan_ff__pch.h"
+#include "Vscan_chain__pch.h"
 
-Vscan_ff__Syms::Vscan_ff__Syms(VerilatedContext* contextp, const char* namep, Vscan_ff* modelp)
+Vscan_chain__Syms::Vscan_chain__Syms(VerilatedContext* contextp, const char* namep, Vscan_chain* modelp)
     : VerilatedSyms{contextp}
     // Setup internal state of the Syms class
     , __Vm_modelp{modelp}
@@ -11,7 +11,7 @@ Vscan_ff__Syms::Vscan_ff__Syms(VerilatedContext* contextp, const char* namep, Vs
     , TOP{this, namep}
 {
     // Check resources
-    Verilated::stackCheck(126);
+    Verilated::stackCheck(188);
     // Setup sub module instances
     // Configure time unit / time precision
     _vm_contextp__->timeunit(-12);
@@ -22,7 +22,7 @@ Vscan_ff__Syms::Vscan_ff__Syms(VerilatedContext* contextp, const char* namep, Vs
     // Setup scopes
 }
 
-Vscan_ff__Syms::~Vscan_ff__Syms() {
+Vscan_chain__Syms::~Vscan_chain__Syms() {
     // Tear down scopes
     // Tear down sub module instances
 }

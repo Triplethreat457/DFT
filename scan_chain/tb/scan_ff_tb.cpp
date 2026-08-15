@@ -12,12 +12,13 @@ int main(int argc, char** argv){
     // Created vitual Dut that can create the signals
     // dut = your simulated scan_ff
     Vscan_ff* dut = new Vscan_ff{contextp};
+    
 
     dut->clk = 0;
     dut->reset = 0;
     dut->scan_enable = 0;
     dut->scan_input = 0;
-    for(int i = 0; i )
+    
 
 /* clk          = 0
    reset        = 0
@@ -29,10 +30,12 @@ int main(int argc, char** argv){
 //Update the outputs based on the current inputs
 dut->eval();
 
-if (dut->Q == 0)
+if (dut->Q == 0){
     printf("Initial Q = 0\n");
-else
+}
+else{
     printf("Initial Q = %d\n", dut->Q);
+}
 
 printf("----------------------CAPTURE TEST-------------------------\n");
 
@@ -45,12 +48,12 @@ dut->clk = 1; // Posclk edge
 dut->eval();
 // Check to see if Q captured 
 if(dut->Q == 1) {
-    printf("PASS: Q Captured the D = 1\n");
+    printf("\nPASS: Q Captured the D = 1\n");
 } else {
-    printf("FAIL: Q = %d, expected 1\n", dut->Q);
+    printf("\nFAIL: Q = %d, expected 1\n", dut->Q);
 }
 
-printf("----------------------SHIFT TEST-------------------------\n");
+printf("\n----------------------SHIFT TEST-------------------------\n");
 dut->clk = 0;
 dut->scan_enable = 1;
 dut->eval();
@@ -58,9 +61,9 @@ dut->eval();
 dut->clk = 1; // Posclk edge
 dut->eval();
 if(dut->Q == 0){
-    printf("PASS: Q shifted in the input of scan_input into Q (SHIFT MODE works)!!\n");
+    printf("\nPASS: Q shifted in the input of scan_input into Q (SHIFT MODE works)!!\n");
 } else {
-    printf("FAIL: Q was read as %d expected 0 from scan_input\n", dut->Q);
+    printf("\nFAIL: Q was read as %d expected 0 from scan_input\n", dut->Q);
 }
 
 printf("----------------------RESET TEST-------------------------\n");
@@ -81,9 +84,9 @@ dut->clk = 1; //posclk edge set
 dut->eval(); // Q should be reset because reset was high
 
 if(dut->Q == 0) {
-    printf("PASS: Q was reset to zero when reset was asserted\n");
+    printf("\nPASS: Q was reset to zero when reset was asserted\n");
 } else {
-    printf("FAIL: Q was read to be %d did not reset to zero\n", dut->Q);
+    printf("\nFAIL: Q was read to be %d did not reset to zero\n", dut->Q);
 }
 
 

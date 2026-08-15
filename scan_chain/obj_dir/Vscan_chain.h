@@ -5,35 +5,37 @@
 // The class here is then constructed to instantiate the design.
 // See the Verilator manual for examples.
 
-#ifndef VERILATED_VSCAN_FF_H_
-#define VERILATED_VSCAN_FF_H_  // guard
+#ifndef VERILATED_VSCAN_CHAIN_H_
+#define VERILATED_VSCAN_CHAIN_H_  // guard
 
 #include "verilated.h"
 
-class Vscan_ff__Syms;
-class Vscan_ff___024root;
+class Vscan_chain__Syms;
+class Vscan_chain___024root;
+class VerilatedVcdC;
 
 // This class is the main interface to the Verilated model
-class alignas(VL_CACHE_LINE_BYTES) Vscan_ff VL_NOT_FINAL : public VerilatedModel {
+class alignas(VL_CACHE_LINE_BYTES) Vscan_chain VL_NOT_FINAL : public VerilatedModel {
   private:
     // Symbol table holding complete model state (owned by this class)
-    Vscan_ff__Syms* const vlSymsp;
+    Vscan_chain__Syms* const vlSymsp;
 
   public:
 
     // CONSTEXPR CAPABILITIES
     // Verilated with --trace?
-    static constexpr bool traceCapable = false;
+    static constexpr bool traceCapable = true;
 
     // PORTS
     // The application code writes and reads these signals to
     // propagate new values into/out from the Verilated model.
     VL_IN8(&clk,0,0);
-    VL_IN8(&scan_input,0,0);
-    VL_IN8(&d,0,0);
     VL_IN8(&reset,0,0);
     VL_IN8(&scan_enable,0,0);
-    VL_OUT8(&Q,0,0);
+    VL_IN8(&scan_input,7,0);
+    VL_OUT8(&scan_out,7,0);
+    VlUnpacked<CData/*7:0*/, 4> &d;
+    VlUnpacked<CData/*7:0*/, 4> &Q;
 
     // CELLS
     // Public to allow access to /* verilator public */ items.
@@ -41,19 +43,19 @@ class alignas(VL_CACHE_LINE_BYTES) Vscan_ff VL_NOT_FINAL : public VerilatedModel
 
     // Root instance pointer to allow access to model internals,
     // including inlined /* verilator public_flat_* */ items.
-    Vscan_ff___024root* const rootp;
+    Vscan_chain___024root* const rootp;
 
     // CONSTRUCTORS
     /// Construct the model; called by application code
     /// If contextp is null, then the model will use the default global context
     /// If name is "", then makes a wrapper with a
     /// single model invisible with respect to DPI scope names.
-    explicit Vscan_ff(VerilatedContext* contextp, const char* name = "TOP");
-    explicit Vscan_ff(const char* name = "TOP");
+    explicit Vscan_chain(VerilatedContext* contextp, const char* name = "TOP");
+    explicit Vscan_chain(const char* name = "TOP");
     /// Destroy the model; called (often implicitly) by application code
-    virtual ~Vscan_ff();
+    virtual ~Vscan_chain();
   private:
-    VL_UNCOPYABLE(Vscan_ff);  ///< Copying not allowed
+    VL_UNCOPYABLE(Vscan_chain);  ///< Copying not allowed
 
   public:
     // API METHODS
@@ -85,6 +87,7 @@ class alignas(VL_CACHE_LINE_BYTES) Vscan_ff VL_NOT_FINAL : public VerilatedModel
     /// Re-init after cloning the model at the process level (e.g. fork in Linux)
     /// Re-allocate necessary resources. Called after cloning.
     void atClone() const;
+    std::unique_ptr<VerilatedTraceConfig> traceConfig() const override final;
   private:
     // Internal functions - trace registration
     void traceBaseModel(VerilatedTraceBaseC* tfp, int levels, int options);
