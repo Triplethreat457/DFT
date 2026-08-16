@@ -1,5 +1,5 @@
 VERILATOR = verilator
-
+PYTHON = python3
 RTL = rtl/scan_ff.sv
 TB = tb/scan_ff_tb.cpp
 RTLT = rtl/scan_ff.sv rtl/scan_chain.sv
@@ -48,4 +48,6 @@ run_test:
 clean:
 	rm -rf obj_dir
 	rm -rf scan_chain.vcd
+	rm -rf scan_ff.vcd
+	rm -rf gtkwave
 

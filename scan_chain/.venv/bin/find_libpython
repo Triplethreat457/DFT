@@ -1,0 +1,6 @@
+#!/Users/triplethreat457/DFT/scan_chain/.venv/bin/python
+import sys
+from find_libpython import main
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main())
