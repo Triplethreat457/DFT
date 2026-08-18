@@ -49,5 +49,8 @@ clean:
 	rm -rf obj_dir
 	rm -rf scan_chain.vcd
 	rm -rf scan_ff.vcd
-	rm -rf gtkwave
+	
+	
 
+cocot:
+	$(PYTHON) tb/test_scan_chain.py
