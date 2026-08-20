@@ -1,8 +1,6 @@
 <testsuites name="results">
   <testsuite name="all" package="all">
-    <property name="random_seed" value="1786938707" />
-    <testcase name="test_scan_chain" classname="test_scan_chain" file="/Users/triplethreat457/DFT/scan_chain/tb/test_scan_chain.py" lineno="7" time="0.0007276535034179688" sim_time_ns="10.0" ratio_time="13742.804718217561">
-      <failure error_type="AssertionError" error_msg="FAIL: Q[0] was 0x00 expected 0xaa" />
-    </testcase>
+    <property name="random_seed" value="1787263509" />
+    <testcase name="test_scan_chain" classname="test_scan_chain" file="/Users/triplethreat457/DFT/scan_chain/tb/test_scan_chain.py" lineno="7" time="0.0007760524749755859" sim_time_ns="65.0" ratio_time="83757.22273425499" />
   </testsuite>
 </testsuites>

@@ -17,19 +17,30 @@ def run():
         build_args = ["--trace","-CFLAGS", "-std=c++14"],
         parameters={
             "width" : 8,  # set paramter width to be 8 
-        },   
+        },
+        waves=True,   # tells the build to expect a trace for waveform dumping
     )
-
+    
     runner.test(
         hdl_toplevel="scan_chain",
         test_module="test_scan_chain",
         test_dir=proj_path / "tb",
+        waves=True # <--- Tells Cocotb to dump the trace
     )
+   
+
+    # 2. Rename the waveform file!
+    old_wave = proj_path / "sim_build" / "dump.vcd"
+    new_wave = proj_path / "sim_build" / "scan_chain.vcd" # Change this to whatever you want
+
+    if old_wave.exists():
+        old_wave.rename(new_wave)
+        print(f"\nWaveform successfully renamed to: {new_wave.name}")
 
 if __name__ == "__main__":
     run()
 
-    
+
 
 
 

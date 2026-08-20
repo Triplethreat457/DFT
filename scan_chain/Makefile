@@ -49,6 +49,10 @@ clean:
 	rm -rf obj_dir
 	rm -rf scan_chain.vcd
 	rm -rf scan_ff.vcd
+	rm -rf tb/__pycache__
+	rm -rf *.vcd
+	rm -rf sim_build
+	
 	
 	
 
