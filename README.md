@@ -12,7 +12,7 @@ Modern versions of macOS use a strict Python environment protocol (PEP 668) that
 
 ### Install Prerequisites
 First, install Verilator and Python using Homebrew:
-```bash
+
 brew install verilator python3
 
 # Create the virtual environment folder named '.venv'
