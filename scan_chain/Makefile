@@ -52,7 +52,8 @@ clean:
 	rm -rf tb/__pycache__
 	rm -rf *.vcd
 	rm -rf sim_build
-	
+	rm tb/dump.vcd
+
 	
 	
 

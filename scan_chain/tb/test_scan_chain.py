@@ -128,56 +128,5 @@ async def test_scan_chain(dut): #Function to actually run test connect it to dut
     await FallingEdge(dut.clk)
 
 
-    print("TEST PASSED")
-
-
 
     
-    
-
-
-    
-
-
-    
-    
-    
-
-
-    
-    
-
-
-
-
-    
-
-
-
-    
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
-    
-
-
-   
-
-    
-
-
-
-
-
-
