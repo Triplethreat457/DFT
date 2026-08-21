@@ -95,6 +95,8 @@ When debugging a scan chain, viewing signals in the correct order is critical.
    *   *Bottom Group (Outputs):* `q` (The array of flip-flop outputs)
 4. **Value Formatting**: You can right-click any multi-bit bus in the viewer to change its format from Binary to Hexadecimal, which makes tracking data shifts much easier.
 
+![alt text](image.png)
+
 ---
 
 # 6. Scan Chain Timing Graphs & Visuals
